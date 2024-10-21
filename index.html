@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF-XIRPL1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .notification {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        #gameForm {
+            display: block;
+        }
+        #successMessage {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CTF-XIRPL1</h1>
+        <div id="notification" class="notification"></div>
+        <div id="gameForm">
+            <p>Temukan flag yang tersembunyi dan masukkan di bawah ini:</p>
+            <form id="flagForm">
+                <input type="text" id="flagInput" placeholder="Masukkan flag di sini">
+                <input type="submit" value="Submit">
+            </form>
+            <p><strong>Petunjuk:</strong> Lihat kode sumber halaman ini untuk menemukan petunjuk!</p>
+        </div>
+        <div id="successMessage">
+            <p>Anda telah berhasil menyelesaikan tantangan!</p>
+        </div>
+    </div>
+
+    <script>
+        // Flag tersembunyi dalam komentar JavaScript
+        // Flag: s3BeL4S_eRpeEL_5@tU
+
+        document.getElementById('flagForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var userFlag = document.getElementById('flagInput').value;
+            var correctFlag = "s3BeL4S_eRpeEL_5@tU";
+            var notification = document.getElementById('notification');
+            
+            if (userFlag === correctFlag) {
+                notification.textContent = "Selamat! Anda berhasil menemukan flag yang benar!";
+                notification.className = "notification success";
+                document.getElementById('gameForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                notification.textContent = "Maaf, flag yang Anda masukkan salah. Coba lagi!";
+                notification.className = "notification error";
+            }
+            notification.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
